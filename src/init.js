@@ -1,7 +1,7 @@
 $(document).ready(function() {
   window.dancers = [];
 
-  $('.addDancerButton').on('click', function(event) {
+  $('body').on('click', '.addDancerButton', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -31,24 +31,39 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
 
+  $('body').on('mouseover', '.pokemonDancer', function() {
+    $(this).fadeIn('fast').attr('src', './images/raichu.gif').addClass('raichu');
+  });
+
   var findDistance = function(array) {
     if (array.length === 0) {
       return;
     }
-    for (var i = 0; i < array.length; i++) {
-      var dancer = window.dancers;
-      var top = dancer.top;
-      var left = dancer.left;
+    var dancer = array[0];
+    for (var i = 1; i < array.length; i++) {
+      var a = Math.abs(dancer.left - array[i].left);
+      var b = Math.abs(dancer.top - array[i].top);
+      var distanceSquared = Math.sqrt(a) + Math.sqrt(b);
+      var distance = Math.round(Math.sqrt(distanceSquared));
+      if (distance <= 4) {
+        console.log('$(dancer.$node) is', $(dancer.$node.hasClass('pokeball')));
+        console.log('$(array[i].$node) is', $(array[i].$node.hasClass('pokemonDancer')));
+        if ($(dancer.$node).hasClass('pokeball') && $(array[i].$node).hasClass('pokemonDancer')) {
+          $(dancer).fadeIn('fast').attr('src', './images/dwight.gif');
+        }
+        //have the dancer and its partner do something
+        $(dancer.$node).addClass('big').fadeOut('slow');
+        $(array[i].$node).addClass('big').fadeOut('slow');
+      }
     }
     return findDistance(array.slice(1));
   };
 
   setInterval(function() {
     findDistance(window.dancers);
-  }, 2000);
+  }, 5000);
 
   $('.lineUpCenterButton').on('click', function() {
-    console.log('I was clicked');
     var sizeTop = 0;
     window.dancers.forEach(function(dancer) {
       lineUp(dancer, sizeTop, Math.floor(window.innerWidth / 2));
@@ -68,10 +83,8 @@ $(document).ready(function() {
   });
 
   var lineUp = function(dancer, sizeTop, sizeLeft) {
-    console.log('inside lineup');
     // dancer.$node.toggle();
     $(dancer).toggleClass('lineUp');
-    console.log('dancer.toggling is', dancer);
     dancer.setPosition(sizeTop, sizeLeft);  
   };
 });

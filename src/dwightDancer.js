@@ -4,7 +4,7 @@ var makeDwightDancer = function(top, left, timeBetweenSteps) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  this.$node = $('<img class="dwight lineUp" src="./images/dwight.jpg"></img>');
+  this.$node = $('<img class="dwight pokemonDancer lineUp" src="./images/pikachu.gif"></img>');
   makeDancer.call(this, top, left, timeBetweenSteps, this.$node);
 };
 
