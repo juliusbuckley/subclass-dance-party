@@ -4,13 +4,14 @@ var makeDwightDancer = function(top, left, timeBetweenSteps) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  this.$node = $('<img class="dwight" src="./images/dwight.jpg"></img>');
+  this.$node = $('<img class="dwight lineUp" src="./images/dwight.jpg"></img>');
   makeDancer.call(this, top, left, timeBetweenSteps, this.$node);
 };
 
 makeDwightDancer.prototype = Object.create(makeDancer.prototype);
 makeDwightDancer.prototype.constructor = makeDwightDancer;
 
+/*
 makeDwightDancer.prototype.step = function() {
     // call the old version of step at the beginning of any call to this new version of step
   makeDancer.prototype.step.call(this);
@@ -20,3 +21,4 @@ makeDwightDancer.prototype.step = function() {
     // other effects you can use on a jQuery-wrapped html tag.
   this.$node.toggle();
 };
+*/

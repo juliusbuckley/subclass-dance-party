@@ -34,6 +34,7 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+  transition: all 1s ease;
 }
 
 .dwight {
@@ -42,4 +43,13 @@ body, a:link, a:visited, a:active{
 
 .dancer2 {
   position: relative;
+}
+
+.lineUp {
+  display: block;
+}
+
+.lineUpCenter {
+  top: 0;
+  left: window.innerWidth / 2;
 }

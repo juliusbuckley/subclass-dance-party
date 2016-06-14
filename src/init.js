@@ -23,12 +23,56 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
       Math.random() * 1000
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
+
+  var findDistance = function(array) {
+    if (array.length === 0) {
+      return;
+    }
+    for (var i = 0; i < array.length; i++) {
+      var dancer = window.dancers;
+      var top = dancer.top;
+      var left = dancer.left;
+    }
+    return findDistance(array.slice(1));
+  };
+
+  setInterval(function() {
+    findDistance(window.dancers);
+  }, 2000);
+
+  $('.lineUpCenterButton').on('click', function() {
+    console.log('I was clicked');
+    var sizeTop = 0;
+    window.dancers.forEach(function(dancer) {
+      lineUp(dancer, sizeTop, Math.floor(window.innerWidth / 2));
+    });
+  });
+
+  $('.lineUpRightButton').on('click', function() {
+    window.dancers.forEach(function(dancer) {
+      lineUp(dancer, 0, window.innerWidth - 250);
+    });
+  });
+
+  $('.lineUpLeftButton').on('click', function() {
+    window.dancers.forEach(function(dancer) {
+      lineUp(dancer, 0, 0);
+    });
+  });
+
+  var lineUp = function(dancer, sizeTop, sizeLeft) {
+    console.log('inside lineup');
+    // dancer.$node.toggle();
+    $(dancer).toggleClass('lineUp');
+    console.log('dancer.toggling is', dancer);
+    dancer.setPosition(sizeTop, sizeLeft);  
+  };
 });
 
