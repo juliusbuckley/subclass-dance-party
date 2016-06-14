@@ -4,8 +4,8 @@ var makeDwightDancer = function(top, left, timeBetweenSteps) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  makeDancer.call(this, top, left, timeBetweenSteps);
-  //this.$node = $('<img class="dwight" src="./images/dwight.jpg"></img>');
+  this.$node = $('<img class="dwight" src="./images/dwight.jpg"></img>');
+  makeDancer.call(this, top, left, timeBetweenSteps, this.$node);
 };
 
 makeDwightDancer.prototype = Object.create(makeDancer.prototype);
