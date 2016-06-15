@@ -82,14 +82,17 @@ body, a:link, a:visited, a:active{
   margin: 0;
 }
 .pokeball {
-  position: relative;
+  position: absolute;
   height: 10em;
   width: 10em;
 }
 
 .charizard {
-  height: 15em;
-  width: 20em;
+  height: 30em;
+  width: 25em;
   padding-right: 0;
   margin: 0;
+}
+
+.wrapper {
 }

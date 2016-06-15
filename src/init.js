@@ -22,13 +22,16 @@ $(document).ready(function() {
 
     // make a dancer with a random position
 
+    // $('body').height() * Math.random(),
+    // $('body').width() * Math.random(),
+    // Math.random() * 1000
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
+      Math.floor(Math.random() * window.innerHeight),
+      Math.floor(Math.random() * window.innerWidth),
       Math.random() * 1000
     );
     window.dancers.push(dancer);
-    $('body').append(dancer.$node);
+    $('.wrapper').append(dancer.$node);
   });
 
   $('body').on('mouseover', '.pikachu', function() {
@@ -54,12 +57,20 @@ $(document).ready(function() {
       var distanceSquared = Math.sqrt(a) + Math.sqrt(b);
       var distance = Math.round(Math.sqrt(distanceSquared));
       if (distance <= 4) {
-        if ($(dancer.$node).hasClass('pokeball') && $(array[i].$node).hasClass('pokemonDancer')) {
-          $(dancer).fadeIn('fast').attr('src', './images/dwight.gif');
-        }
+        //if ($(dancer.$node).hasClass('pokeball') && $(array[i].$node).hasClass('pokemonDancer')) {
+          //dancer.$node.css({top: array[i].top, left: array[i].left, zIndex: -1});
+        $(dancer.$node).addClass('animated shake infinite'); 
+        $(array[i].$node).addClass('animated flip infinite');
+        // $(dancer.$node).addClass('shake');         
+        /*
+          $(dancer.$node).fadeIn('slow').attr('src', './images/dwight.jpg');
+          $(dancer.$node).fadeIn('slow').get('top', array[i].top);
+          $(dancer.$node).fadeIn('slow').get('left', array[i].left);
+          */
+       // }
         //have the dancer and its partner do something
-        $(dancer.$node).addClass('big');
-        $(array[i].$node).addClass('big');
+        //$(dancer.$node).addClass('big');
+        //$(array[i].$node).addClass('big');
       }
     }
     return findDistance(array.slice(1));
@@ -67,7 +78,7 @@ $(document).ready(function() {
 
   setInterval(function() {
     findDistance(window.dancers);
-  }, 5000);
+  }, 1000);
 
   $('.lineUpCenterButton').on('click', function() {
     var sizeTop = 0;
