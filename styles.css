@@ -19,7 +19,7 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:right;
 }
-.title, .addMichaelButton{
+.title, .addPokeBallButton{
   padding:5px 12px;
   float:right;
 }
@@ -37,7 +37,13 @@ body, a:link, a:visited, a:active{
   transition: all 1s ease;
 }
 
-.dwight {
+.pikachu {
+  position: relative;
+  height: 5em;
+  width: 5em;
+}
+
+.charmander {
   position: relative;
   height: 5em;
   width: 5em;
@@ -69,9 +75,21 @@ body, a:link, a:visited, a:active{
   padding-right: 0;
   margin: 0;
 }
-
+.charmeleon {
+  height: 8em;
+  width: 20em;
+  padding-right: 0;
+  margin: 0;
+}
 .pokeball {
   position: relative;
   height: 10em;
   width: 10em;
+}
+
+.charizard {
+  height: 15em;
+  width: 20em;
+  padding-right: 0;
+  margin: 0;
 }

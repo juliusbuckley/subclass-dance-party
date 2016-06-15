@@ -1,18 +1,18 @@
-var makeMichaelDancer = function(top, left, timeBetweenSteps) {
+var makePikachuDancer = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  this.$node = $('<img class="pokeball" src="./images/pokeball.gif"></img>');
+  this.$node = $('<img class="pikachu pokemonDancer lineUp" src="./images/pikachu.gif"></img>');
   makeDancer.call(this, top, left, timeBetweenSteps, this.$node);
 };
 
-makeMichaelDancer.prototype = Object.create(makeDancer.prototype);
-makeMichaelDancer.prototype.constructor = makeMichaelDancer;
+makePikachuDancer.prototype = Object.create(makeDancer.prototype);
+makePikachuDancer.prototype.constructor = makePikachuDancer;
 
 /*
-makeMichaelDancer.prototype.step = function() {
+makePikachuDancer.prototype.step = function() {
     // call the old version of step at the beginning of any call to this new version of step
   makeDancer.prototype.step.call(this);
   // this.oldStep();

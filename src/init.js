@@ -31,8 +31,16 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
 
-  $('body').on('mouseover', '.pokemonDancer', function() {
+  $('body').on('mouseover', '.pikachu', function() {
     $(this).fadeIn('fast').attr('src', './images/raichu.gif').addClass('raichu');
+  });
+
+  $('body').on('mouseover', '.charmander', function() {
+    $(this).fadeIn('fast').attr('src', './images/charmeleon.gif').addClass('charmeleon');
+  });
+
+  $('body').on('mouseover', '.charmeleon', function() {
+    $(this).fadeIn('fast').attr('src', './images/charizard.gif').addClass('charizard');
   });
 
   var findDistance = function(array) {
@@ -46,14 +54,12 @@ $(document).ready(function() {
       var distanceSquared = Math.sqrt(a) + Math.sqrt(b);
       var distance = Math.round(Math.sqrt(distanceSquared));
       if (distance <= 4) {
-        console.log('$(dancer.$node) is', $(dancer.$node.hasClass('pokeball')));
-        console.log('$(array[i].$node) is', $(array[i].$node.hasClass('pokemonDancer')));
         if ($(dancer.$node).hasClass('pokeball') && $(array[i].$node).hasClass('pokemonDancer')) {
           $(dancer).fadeIn('fast').attr('src', './images/dwight.gif');
         }
         //have the dancer and its partner do something
-        $(dancer.$node).addClass('big').fadeOut('slow');
-        $(array[i].$node).addClass('big').fadeOut('slow');
+        $(dancer.$node).addClass('big');
+        $(array[i].$node).addClass('big');
       }
     }
     return findDistance(array.slice(1));
